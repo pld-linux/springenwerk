@@ -1,12 +1,13 @@
 Summary:	Cross Site Scripting (XSS) security scanner, written in Python
 Name:		springenwerk
 Version:	0.4.5
-Release:	0.1
+Release:	0.2
 License:	BSD-like
 Group:		Applications/WWW
 Source0:	http://www.hacktoolrepository.com/files/Web%20applications/Springenwerk/%{name}-%{version}.tar.gz
 # Source0-md5:	ca1d8236ff7701f7a2732002c22b6b1e
 URL:		http://www.springenwerk.com/
+BuildRequires:	sed >= 4.0
 Requires:	python >= 1:2.4.0
 Requires:	python-BeautifulSoup
 Requires:	python-modules
@@ -40,6 +41,9 @@ Cross Site Scripting (XSS) security scanner - GUI.
 
 %prep
 %setup -q
+
+# add python shebang
+%{__sed} -i -e '1i#!%{__python}' *.py
 
 %install
 rm -rf $RPM_BUILD_ROOT
