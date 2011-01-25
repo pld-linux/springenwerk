@@ -42,6 +42,9 @@ Cross Site Scripting (XSS) security scanner - GUI.
 %prep
 %setup -q
 
+# unmodified BeautifulSoup.py 3.0.3
+%{__rm} BeautifulSoup.py
+
 # add python shebang
 %{__sed} -i -e '1i#!%{__python}' *.py
 
